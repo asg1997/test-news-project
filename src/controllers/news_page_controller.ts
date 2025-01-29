@@ -29,11 +29,12 @@ export class NewsPageController {
     private _showNews() {
 
         const templateCell = this._document.getElementById('template-cell') as HTMLElement;
+
         for (const news of this._news) {
             const newsItemElement = templateCell.cloneNode(true) as HTMLElement;
-
             this._fillNewsItem(newsItemElement, news);
             newsItemElement.removeAttribute('id');
+            newsItemElement.style.display = 'flex';
             this._newsContainer?.appendChild(newsItemElement);
         }
     }

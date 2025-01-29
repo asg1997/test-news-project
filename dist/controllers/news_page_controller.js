@@ -25,6 +25,7 @@ export class NewsPageController {
             const newsItemElement = templateCell.cloneNode(true);
             this._fillNewsItem(newsItemElement, news);
             newsItemElement.removeAttribute('id');
+            newsItemElement.style.display = 'flex';
             this._newsContainer?.appendChild(newsItemElement);
         }
     }
