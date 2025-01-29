@@ -1,0 +1,23 @@
+0. npm init -y
+1. npm i typescript --save-dev
+2. npx tsc --init
+
+3. в tsconfig:
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+  }
+}
+
+4. Создать файл scr/index.ts
+5. Проверяем работоспобосность
+Пишем в scr/index.ts:
+
+const world = 'world';
+export function hello(word: string = world): string {
+  return `Hello ${world}! `;
+}
+
+6. запускаем npx tsc index.ts
