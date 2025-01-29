@@ -21,8 +21,8 @@ export class NewsPageController {
         this._showNews();
     }
 
-    private _getNews() {
-        const news = this._newsFetcher.getTopHeadlines();
+    private async _getNews() {
+        const news = await this._newsFetcher.getTopHeadlines();
         this._news.push(...news);
 
     }

@@ -1,14 +1,29 @@
 import { NewsItem } from "../models/news_item.js";
+import axios from './../../node_modules/axios';
+
 
 export class NewsFetcher {
-    getTopHeadlines(): NewsItem[] {
-        return [
-            new NewsItem(
-                'Trumps claims military entered California to release water flow, but state says that did not happen - Fox News',
-                'Landon Mion',
-                'https://static.foxnews.com/foxnews.com/content/uploads/2025/01/us-politics-trump-california-fire-2.jpg',
-                'https://www.bbc.com/news/articles/c0qw7z2v1pgo')
-        ];
+    async getTopHeadlines(): Promise<NewsItem[]> {
+        try {
+            const response = await axios.get(`https://newsapi.org/v2/top-headlines`, {
+                params: {
+                    country: 'us',
+                    apiKey: '0104952418a044bd866d7d0b8f4617fc'
+                }
+            });
+
+            // Преобразуем данные из ответа в массив NewsItem
+            return response.data.articles.map((article: any) => new NewsItem(
+                article.title,
+                article.author || 'Unknown',  // Если автор не указан, ставим "Unknown"
+                article.urlToImage || '',  // Если нет изображения, ставим пустую строку
+                article.url
+            ));
+        } catch (error) {
+            console.error('Error fetching news:', error);
+            return [];  // Возвращаем пустой массив в случае ошибки
+        }
+
     }
 }
 

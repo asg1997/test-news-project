@@ -11,18 +11,10 @@ export class NewsItem {
         this.articleUrl = articleUrl;
     }
 
-    static fromJson(json: string): NewsItem {
-        const parsedJson = JSON.parse(json);
-        return new NewsItem(
-            parsedJson.title,
-            parsedJson.author,
-            parsedJson.imageUrl,
-            parsedJson.articleUrl,
-        );
 
 
 
 
-    }
+
 
 }
