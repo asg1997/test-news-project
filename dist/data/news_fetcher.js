@@ -1,5 +1,5 @@
+import axios from "axios";
 import { NewsItem } from "../models/news_item.js";
-import axios from './../../node_modules/axios';
 export class NewsFetcher {
     async getTopHeadlines() {
         try {
